@@ -1,0 +1,1 @@
+# This is repository for reproducing GAR on Reasoning Intensive IR
