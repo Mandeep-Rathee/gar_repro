@@ -37,12 +37,11 @@ Before running experiments, you may need to create an index and a corpus graph.
 Use `create_index.py` to index the dataset.
 
 ```bash
-python3 create_index.py --task <TASK_NAME> --index_type <TYPE>
+python3 create_index.py --task <TASK_NAME> 
 ```
 
 **Arguments:**
 - `--task`: The specific task from the BRIGHT benchmark (default: `biology`).
-- `--index_type`: Type of index to create. Options: `pisa` (default), `terrier`, `qwen`.
 
 ### 2. Create Graph
 Use `create_graph.py` to create a corpus graph for adaptive reranking.
