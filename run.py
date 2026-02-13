@@ -9,7 +9,6 @@ import multiprocessing
 try:
     multiprocessing.set_start_method('spawn', force=True)
 except RuntimeError:
-    # Already set, that's fine
     pass
 
 import pyterrier as pt
