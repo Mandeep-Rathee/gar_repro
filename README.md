@@ -80,4 +80,6 @@ Run TFRank-8B on the Sustainable Living task:
 python3 run.py --task sustainable-living --model_name tfrank-8b --budget 50
 ```
 
+## Budget 50 results
 
+Due to limited space, we added budget c=50 results per subtask in `budget_50.md`
