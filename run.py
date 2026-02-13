@@ -13,7 +13,6 @@ except RuntimeError:
 
 import pyterrier as pt
 import pyterrier_alpha as pta
-from pyterrier_caching import ScorerCache
 import ir_datasets
 from ir_measures import nDCG, R
 
@@ -28,7 +27,7 @@ from get_model import GetRanker
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--task', type=str, default="biology")
-    parser.add_argument('--model_name', type=str, default="gpt-4o")
+    parser.add_argument('--model_name', type=str, default="tfrank-0.6b")
     parser.add_argument('--budget', type=int, default=50)
     parser.add_argument("--batch", type=int, default=16, help="batch size for reranker")
     parser.add_argument("--graph", type=str, default="gbm25")
@@ -79,16 +78,14 @@ def main():
     
     print(f"Using {args.model_name} ranker")
 
-    cache_path = f"./cache/{args.task}_{args.model_name}.cache"
 
 
     if args.task == "stackoverflow":
         text_loader = TextLoader(docstore)
-        scorer_ = text_loader >> ranker
+        scorer = text_loader >> ranker
     else:
-        scorer_ = pt.text.get_text(dataset, 'text') >> ranker
+        scorer = pt.text.get_text(dataset, 'text') >> ranker
 
-    scorer = ScorerCache(cache_path, scorer_)
     
 
     topics = dataset.get_topics()
