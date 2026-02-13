@@ -28,6 +28,34 @@
    pip install --upgrade git+https://github.com/terrierteam/pyterrier_t5.git
    ```
 
+
+## Preprocessing: Index and Graph Creation
+
+Before running experiments, you may need to create an index and a corpus graph.
+
+### 1. Create Index
+Use `create_index.py` to index the dataset.
+
+```bash
+python3 create_index.py --task <TASK_NAME> --index_type <TYPE>
+```
+
+**Arguments:**
+- `--task`: The specific task from the BRIGHT benchmark (default: `biology`).
+- `--index_type`: Type of index to create. Options: `pisa` (default), `terrier`, `qwen`.
+
+### 2. Create Graph
+Use `create_graph.py` to create a corpus graph for adaptive reranking.
+
+```bash
+python3 create_graph.py --task <TASK_NAME> --k <K>
+```
+
+**Arguments:**
+- `--task`: The specific task (default: `biology`).
+- `--k`: Number of neighbors in the graph (default: `16`).
+
+
 ## Usage
 
 The main entry point for running experiments is `run.py`.
